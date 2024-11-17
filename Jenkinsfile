@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // 定义环境变量
-        MAVEN_HOME = tool 'Maven' // 确保在 Jenkins 中配置了 Maven 工具
+        MAVEN_HOME = tool 'Maven3.9.9' // 确保在 Jenkins 中配置了 Maven 工具
     }
 
     stages {
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     // 启动 Spring Boot 应用
-                    sh "nohup java -jar target/your-spring-boot-app.jar > app.log 2>&1 &"
+                    sh "nohup java -jar target/jzr_takeout-0.0.1-SNAPSHOT.jar > app.log 2>&1 &"
                 }
             }
         }
