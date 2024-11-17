@@ -1,0 +1,7 @@
+
+<mapper namespace="mapper.UserMapper">
+    <insert id="save" parameterType="com.entity.user">
+        INSERT INTO user (id, username, password) VALUES (NULL, #{username}, #{password})
+    </insert>
+</mapper>
+
