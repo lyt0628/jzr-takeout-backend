@@ -1,4 +1,10 @@
 package icu.lyt0628.jzr_takeout.active_record;
 
-public class Driver {
+
+import lombok.*;
+
+@EqualsAndHashCode(callSuper = true)
+@Data
+@Builder
+public class Driver extends  User{
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="icu.lyt0628.jzr_takeout.active_record.mapper.DishMapper">
+
+    <select id="getDishesByShopId" resultType="icu.lyt0628.jzr_takeout.active_record.Dish">
+        select * from t_dish where shop_id = #{shopId}
+    </select>
+
+    <select id="getDishById" resultType="icu.lyt0628.jzr_takeout.active_record.Dish">
+        select * from t_dish where id =#{id}
+    </select>
+
+
+    <insert id="addDish">
+        insert into t_dish
+            (name, shop_id, price, created_at, updated_at)
+        VALUES
+            (#{name}, #{shopId}, #{price},#{createdAt}, #{updatedAt})
+    </insert>
+
+    <insert id="deleteDishById">
+        delete from t_dish where id = ${id}
+    </insert>
+
+    <update id="updateDishById">
+        UPDATE t_dish
+        <set>
+            <if test="shopId != null">shop_id = #{shopId},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="createdAt != null">created_at = #{createdAt},</if>
+            <if test="updatedAt != null">updated_at = #{updatedAt},</if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

@@ -1,7 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mapper.UserMapper">
-    <insert id="save" parameterType="com.entity.user">
-        INSERT INTO user (id, username, password) VALUES (NULL, #{username}, #{password})
+<mapper namespace="icu.lyt0628.jzr_takeout.active_record.mapper.UserMapper">
+    <select id="getAllUsers" resultType="icu.lyt0628.jzr_takeout.active_record.User">
+        select * from t_user
+    </select>
+
+    <insert id="addUser">
+        insert into t_user
+            (user_name, pwd, role, phone, gender, created_at, updated_at, status)
+        VALUES
+            (#{userName}, #{pwd}, #{role}, #{phone}, #{gender}, #{createdAt}, #{updatedAt}, #{status})
+    </insert>
+
+    <insert id="deleteUserById">
+        delete from t_user where id = ${id}
     </insert>
 </mapper>
-
